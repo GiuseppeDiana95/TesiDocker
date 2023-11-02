@@ -1,0 +1,28 @@
+Caro Giuseppe, 
+Ti allego un esempio di implementazione di Mirador in NodeJS con due plugin caricati. Non devi far altro che eseguire in sequenza: 
+npm install
+npm run parcel
+
+
+Chiaramente uscirá a video l'indirizzo della pagina web a cui devi accedere. Ho utilizzato il plugin che ti permette di scaricare i contenuti ed un altro che ti permette in realTime di modificare saturazione, colore, etc dell'immagine tramite le API IIIF. 
+
+Per raggiungere questo obiettivo ho dovuto: 
+Copiare tutti i file di configurazione necessari in una singola cartella (quelli che trovi nella cartella principale di un esempio di plugin TRANNE PACKAGE-LOCK.JSON E PACKAGE.JSON)
+Per quanto riguarda package-lock.json e package.json questi devono contenere entrambe le dipendenze di entrambi gli script che vuoi eseguire per cui ho proceduto a copiare semplicemente le dipendenze in un unico file JSON stando attento alla formattazione del JSON stesso. 
+
+Dopodiché ho copiato i file del plugin di download nel file /src_download, mentre quelli dell'altro plugin erano giá disponibili dal repository di node_js quindi non c'é stato bisogno di copiarli. 
+
+Infine, nel fine index.js presente in /src ho importato entrambi i plugin all'avvio di mirador. 
+
+Quello che ti consiglio quindi di fare, per raggiungere il tuo obiettivo é: 
+
+creare una nuova cartella del tipo: src_tracker
+iniziare a scrivere il codice js all'interno di quella cartella e, ogni volta in cui avrai bisogno di una dipendenza, aggiungerla nel singolo file package.json (se ci sono problemi di versioning anche in package-lock.json). 
+dopodiché importare anche il tuo plugin in index.js
+
+Chiaramente puoi prendere spunto dai file in src_download per capire come funziona l'interfacciamento con Mirador da codice.
+
+
+Spero di esserti stato utile, per qualsiasi altra informazione contattami pure
+
+Dario Branco

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Mirador</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script type="text/javascript" src="/strophe.muc.7df589dc.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.conversejs.org/dist/converse.min.css">
+    <script src="https://cdn.conversejs.org/dist/converse.min.js" charset="utf-8"></script>
+
+    <script type="module" src="/echobot2.e797566f.js"></script>
+
+    <!--<script src="../node_modules/mirador/dist/mirador.min.js"></script>-->
+    
+    <script>var aut = converse.initialize({
+  bosh_service_url: 'http://localhost:5280/http-bind/',
+  //bosh_service_url: 'https://conversejs.org/http-bind/', // Please use this connection manager only for testing purposes
+  show_controlbox_by_default: true,
+  authentication: 'login',
+  jid: 'user@localhost',
+  password: '123456',
+  auto_login: true,
+  //allow_logout: false,
+  auto_join_rooms: [{
+    jid: 'chat@localhost'
+  }]
+});</script>
+      <div id="viewer">
+    <script src="/src.7ed060e2.js"></script>
+  </div></body>
+</html>

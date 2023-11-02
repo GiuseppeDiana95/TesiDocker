@@ -1,0 +1,43 @@
+version: '3'
+services:
+  mirador:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "1234:1234"
+    networks:
+      - custom_network
+
+  prosody:
+    build:
+      context: ./prosody
+      dockerfile: Dockerfile
+    ports:
+      - "5222:5222"
+      - "5280:5280"
+    networks:
+      - custom_network
+
+  rasa:
+    build:
+      context: ./rasa  # Directory del tuo progetto Rasa
+      dockerfile: Dockerfile  # Il tuo Dockerfile personalizzato per Rasa (se presente)
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./rasa:/app  # Monta il tuo progetto Rasa nella directory /app nel container Rasa
+    networks:
+      - custom_network
+
+  rasa_action:
+    image: rasa/rasa-sdk:latest
+    ports:
+      - "5055:5055"
+    networks:
+      - custom_network
+
+
+networks:
+  custom_network:
